@@ -1,4 +1,20 @@
-FROM node:alpine as builder 
+# FROM node:alpine as builder 
+
+# WORKDIR /usr/src/app
+
+# COPY package.json ./
+
+# RUN npm install
+
+# COPY ./ ./
+
+# CMD ["npm", "run", "build"]
+
+# FROM nginx
+
+# COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+
+FROM node:alpine
 
 WORKDIR /usr/src/app
 
@@ -8,9 +24,7 @@ RUN npm install
 
 COPY ./ ./
 
-CMD ["npm", "run", "build"]
+ENV CHOKIDAR_USEPOLLING=true 
 
-FROM nginx
-
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+CMD ["npm","run","start"]
 
