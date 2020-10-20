@@ -7,7 +7,7 @@ services:
 
 before_install:
   - echo "start dockerfile"
-  - docker build -t wmc1415/docker_react -f Dockerfile.dev ./
+  - docker build -t wmc1415/docker_react -f Dockerfile.dev /2020-10-20_2
 
 script:
   - docker run -e CI=true wmc1415/docker_react npm run test -- --coverage
