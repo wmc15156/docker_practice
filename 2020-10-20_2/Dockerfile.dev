@@ -12,3 +12,8 @@ ENV CHOKIDAR_USEPOLLING=true
 
 CMD ["npm","run","start"]
 
+
+
+
+
+
