@@ -1,0 +1,21 @@
+version: "3"
+
+services: # 컨테이너들을 정의
+  react: # 컨테이너 이름
+    build:
+      context: ./ # 도커파일이 위치한 위치
+      dockerfile: Dockerfile.dev # 도커파일 이름
+    ports: 
+      - "3000:3000" # port 맵핑
+    volumes: 
+      - /usr/src/app/node_modules
+      - ./:/usr/src/app
+    stdin_open: true # 리액트 앱을 돌리때 필요한 옵션 , 리액트앱을 끌때 필요
+  tests: 
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    volumes: 
+      - /usr/src/app/node_modules
+      - ./:/usr/src/app
+    command: ["npm", "run", "test"]

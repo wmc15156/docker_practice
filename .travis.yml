@@ -1,0 +1,17 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - echo "start dockerfile"
+  - docker build -t wmc1415/docker_react ./2020-10-20_2
+
+script:
+  - docker run -e CI=true wmc1415/docker_react npm run test -- --coverage
+
+
+after_success:
+  -echo 'success'
